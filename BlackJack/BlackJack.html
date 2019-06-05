@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Black Jack (without bitches)</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="blackjack.js"></script>
+</head>
+<body>
+<div class="game">
+<div class="field">
+		<div class="block">Карты игрока :
+		</div>
+		<div class="block" id="plcards">
+		</div>
+</div>
+<div class="field">
+	<div class="block">Игрок набрал :
+	</div>
+	<div id="plscore" class="block">0
+	</div>
+</div>
+
+
+<div class="field">
+		<div class="block">Карты диллера:
+		</div>
+		<div class="block" id="dlcards">
+		</div>
+</div>
+<div class="field">
+	<div class="block">Диллер набрал:
+	</div>
+	<div id="dlscore" class="block">0
+	</div>
+</div>
+
+<div class="field">
+	<div class="block">Деньги игрока :
+	</div>
+	<div id="plmoney" class="block">0
+	</div>
+</div>
+
+<div class="field">
+	<div class="block">Деньги диллера:
+	</div>
+	<div id="dlmoney" class="block">0
+	</div>
+</div>
+
+<div class="field">
+	<div class="block">Банк:
+	</div>
+	<div id="pot" class="block">0
+	</div>
+</div>
+
+	<div>
+		<input type="button" id="push" value="Push">
+		<input type="button" id="stay" value="Stay">
+	</div>
+
+	<div id="result">...</div>
+	<label for="bet">Ставка:</label>
+	<input type="text" id="bet" value="20">
+	<input type="button" id="deal" value="Deal">
+</div>
+
+<div class="game">
+<div id="imgBox">
+</div>
+</div>
+</body>
+</html>

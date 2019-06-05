@@ -1,0 +1,8 @@
+.block {
+	display: inline-block;
+
+}
+.game {
+	display: inline-block;
+	vertical-align: top;
+}
