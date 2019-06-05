@@ -1,0 +1,14 @@
+ {
+	border: 0px;
+	margin: 0px;
+}
+
+#controls>label{
+	display: list-item;
+	margin: 10px;
+
+}
+
+.field {
+	width: 25px;
+}
