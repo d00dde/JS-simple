@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <title>Painting</title>
+    <style>
+    	canvas {
+    		border: 1px solid black;
+    	}
+    </style>
+</head>
+<body>
+
+<canvas id="mypic" width="1200" height="500"></canvas>
+
+<form>
+
+	<P>
+		<label for="bgColor">Укажите цвет фона:</label>
+		<input type="text" id="bgColor" value="cyan">
+		<input type="button" id="setBackground" value="Установить" >
+	</p>
+
+	<p>
+		<label for="shape">Выберите фигуру</label>
+		<select id="shape">
+			<option value="triangles">треугольник</option>
+			<option value="squares" selected="selected">квадрат</option>
+			<option value="circles">круг</option>
+		</select>
+		<label for="size">Размер:</label>
+		<input type="text" id="size" value="40">
+
+	</p>
+	<P>
+
+		<label for="shapeColor">Укажите цвет фигуры:</label>
+		<input type="text" id="shapeColor" value="yellow">
+	</p>
+
+	<p>
+		<label for="count">Сколько штук?:</label>
+		<input type="text" id="count" value="20">
+	</p>
+	<P>
+		<input type="button" id="previewButton" value="Нанести" >
+	</p>
+
+	
+
+</form>
+
+<div id="box"></div>
+
+<script>window.onload = function () {
+
+	var previewButton = document.getElementById ("previewButton");
+	var setBackground = document.getElementById ("setBackground");
+	var canvas = document.getElementById ("mypic");
+	var context = canvas.getContext ("2d");
+
+	previewButton.onclick = function () {
+
+		var shapeform = document.getElementById ("shape");
+		var selectedShape = shapeform[shapeform.selectedIndex].value;
+
+		var shapeColor = document.getElementById ("shapeColor").value;
+		var count = document.getElementById ("count").value;
+		var size = Number(document.getElementById ("size").value);
+
+		switch (selectedShape) {
+			case "squares" : drawSquares (canvas, context, count, shapeColor, size);
+			break;
+			case "circles" : drawCircles (canvas, context, count, shapeColor, size);
+			break;
+			case "triangles" : drawTriangles (canvas, context, count, shapeColor, size);
+			break;
+
+		}
+	}
+
+	setBackground.onclick = function () {
+		var bgColor = document.getElementById ("bgColor").value;
+		context.fillStyle = bgColor;
+		context.fillRect (0,0, canvas.width, canvas.height);
+	}
+	canvas.onclick = function () {
+		window.location = canvas.toDataURL ("image/png");
+	}
+
+}
+
+function drawSquares (canvas, context, count, color, size) {
+	
+	context.fillStyle = color;
+	for (var i = 0; i < count; i++) {
+
+		var w = Math.floor(Math.random()*size);
+		var x = Math.floor(Math.random()*canvas.width);
+		var y = Math.floor(Math.random()*canvas.height);
+
+		context.fillRect (x,y,w,w);
+	}
+
+}
+
+function drawCircles (canvas, context, count, color, size) {
+	
+	context.fillStyle = color;
+	for (var i = 0; i < count; i++) {
+
+		var r = Math.floor(Math.random()*size);
+		var x = Math.floor(Math.random()*canvas.width);
+		var y = Math.floor(Math.random()*canvas.height);
+
+		context.beginPath();
+		context.arc (x,y,r,0,2*Math.PI,true);
+		context.fill();
+	}
+
+}
+
+function drawTriangles (canvas, context, count, color, size) {
+	
+	context.fillStyle = color;
+	for (var i = 0; i < count; i++) {
+
+		var x = Math.floor(Math.random()*canvas.width);
+		var y = Math.floor(Math.random()*canvas.height);
+
+		context.beginPath();
+		context.moveTo(x,y);
+		x = x + (Math.random()>0.5?-1:1)*Math.random()*size;
+		y = y + (Math.random()>0.5?-1:1)*Math.random()*size;
+		context.lineTo(x,y);
+		x = x + (Math.random()>0.5?-1:1)*Math.random()*size;
+		y = y + (Math.random()>0.5?-1:1)*Math.random()*size;
+		context.lineTo(x,y);
+		context.closePath();
+		context.fill();
+	}
+
+}</script>
+</body>
+</html>
