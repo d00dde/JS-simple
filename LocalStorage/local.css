@@ -1,0 +1,160 @@
+
+body {
+	background-color: grey;
+}
+
+#mainMenu {
+	position: absolute;
+	background-image: url("images\\menu.png");
+	background-size: contain;
+	height: 30px;
+	min-width: 30px;
+	width: max-content;
+}
+
+.menuItem {
+
+	display: none;
+	position: relative;
+	background-color: #fff;
+	width: max-content;
+	padding-right: 2px;
+	padding-left: 2px;
+}
+
+#mainMenu:hover div {
+
+	transition: height 0.5s;
+	display: list-item;
+	list-style: none;
+
+}
+
+
+.headler {
+	font-size: 2em;
+	text-align: center;
+}
+
+.wrapper {
+	position: relative;
+	vertical-align: top;
+}
+
+#textField {
+	width:  500px;
+	margin-left: 30%;
+}
+
+input {
+	font-size: 2ex;
+	font-family: serif;
+	vertical-align: top;
+	width: 100px;
+}
+
+#colorMenu {
+	width: 40px;
+	position: absolute;
+	top: 0px;
+	left: 27%;
+}
+
+#colorMenu:hover div {
+	display: list-item;
+	list-style: none;
+	height: 20px;
+	transition: height 0.5s;
+
+}
+
+#colorMenu > div:hover {
+	border: solid 1px;
+}
+
+#titleColor {
+	display: list-item;
+	list-style: none;
+	width: 40px;
+	height: 20px;
+}
+
+.color {
+	height: 0px;
+	width: 40px;
+	position: relative;
+	transition: height 0.5s;
+}
+
+.stick {
+	display: inline-block;
+	vertical-align: top;
+	width: 200px;
+	min-height: 200px;
+	margin: 40px;
+	border-radius: 20px;
+	
+}
+
+.time {
+	float: left;
+	float: top;
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+.delStick {
+	float: right;
+	float: top;
+	max-width: 20px;
+	max-height: 20px;
+	padding-right: 10px;
+	padding-top: 10px;
+}
+
+
+.stickText {
+	text-align: center;
+	font-family: tahoma;
+	font-size: 30px;
+	padding: 15px;
+	padding-top: 40px;
+	overflow-wrap: break-word;
+}
+
+
+#heart {
+	position: fixed;
+	top: 45px;
+	left: 20px;
+	width: 20px;
+	height: 20px;
+	animation: heartBeat 1s infinite;
+}
+
+@keyframes heartBeat {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  14% {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+
+  28% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  42% {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+
+  70% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
