@@ -1,0 +1,53 @@
+
+h1 {
+	text-align: center;
+	padding-top: 200px;
+}
+
+.wraper {
+	text-align: left;
+	border: 1px solid tomato;
+	border-radius: 15px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+}
+
+.box{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-ms-align-items: center;
+	align-items: center;
+	margin: 20px;
+	cursor: pointer;
+}	
+	
+.uncheck {
+	width: 25px;
+	height: 25px;
+	margin-right: 5px;
+	border: 3px solid grey;
+	border-radius: 50%;
+}
+
+.checked {
+	width: 30px;
+	height: 30px;
+	margin-right: 5px;
+	background-image: url(586383a07d90850fc3ce290f.png);
+	-webkit-background-size: cover;
+	background-size: cover;
+
+}
+
+.chbox {
+	font-size: 20px;
+	font-family: sans-serif;
+
+}
+
