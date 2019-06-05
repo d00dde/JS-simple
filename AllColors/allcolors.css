@@ -1,0 +1,33 @@
+#colorFrame {
+	width: 200px;
+	height: 200px;
+	border: solid 1px;
+	position: fixed;
+
+}
+
+#colorFrameStub {
+	width: 200px;
+	height: 200px;
+
+}
+
+input {
+	margin: 10px;
+	width: 800px;
+
+}
+
+.tile {
+
+	margin: 2px;
+	border: solid 1px;
+	width: 40px;
+	height: 25px;
+	display: inline-block;
+
+}
+
+.tile:hover {
+	transform: scale(1.1);
+}
