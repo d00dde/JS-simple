@@ -1,0 +1,31 @@
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#both {
+ display: inline;
+ margin-top: 40px;
+
+}
+
+canvas {
+	border: 1px solid;
+}
+
+#bufer {
+	display: none;
+}
+ .box {
+	display: inline;
+	text-align: center;
+	
+ }
+
+#controls * {
+	display: list-item;
+	margin: 10px;
+}
+
+

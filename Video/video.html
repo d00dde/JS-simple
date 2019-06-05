@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Video now</title>
+	<script src="video.js"></script>
+	<link rel="stylesheet" href="video.css">
+</head>
+<body>
+
+<div id="both">
+	<video id="video" controls width="720" height="480"></video>
+	<canvas id="bufer" width="720" height="480"></canvas>
+	<canvas id="display" width="720" height="480"></canvas>
+</div>
+<div id="controls">
+	<input type="text" value="video\Summer.mp4" id="fileName">
+	<textarea  id="userFilter" cols="90" rows="15"> var brightness = ((3*r + 4*b + g) >>> 3) < 0 ? 0 : ((3*r + 4*b + g) >>> 3);
+
+
+data [pos*4 + 0] = b;
+//data [pos*4 + 1] = brightness ;
+data [pos*4 + 2] = r;
+
+/*if (g-r  > 50){
+data [pos*4 + 0] = 25;
+data [pos*4 + 1] = 25;
+data [pos*4 + 2] = 25;
+}*/ </textarea>
+</div>
+
+</body>
+</html>
