@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>График</title>
+	
+	<style>
+#container{
+	width: 430px;
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 15px;
+ 
+}
+.day {
+
+	width: 55px;
+	height: 45px;
+	border: black solid 1px;
+
+	text-align: center;
+	font-size: 37px; 
+	font-weight: 100;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin: 2px;
+}
+
+.blind {
+	visibility: hidden;
+}
+
+.headler {
+	background-color: lightyellow;
+}
+
+.workingNight {
+	background-color: lightblue;
+}
+
+.workingDay {
+	background-color: lightgreen;
+}
+label {
+	display: inline-block;
+	font-size: 25px;
+}
+select {
+	font-size: 25px;
+}
+
+</style>
+</head>
+<body>
+
+	<select name="year" id="year">
+		<option value="2019" selected>2019</option>
+		<option value="2020">2020</option>
+		<option value="2021">2021</option>
+		<option value="2022">2022</option>
+		<option value="2023">2023</option>
+		<option value="2024">2024</option>
+		<option value="2025">2025</option>
+		<option value="2026">2026</option>
+		<option value="2027">2027</option>
+		<option value="2028">2028</option>
+		<option value="2029">2029</option>
+	</select>
+	<select name="month" id="month">
+		<option value="0" selected>Январь</option>
+		<option value="1">Февраль</option>
+		<option value="2">Март</option>
+		<option value="3">Апрель</option>
+		<option value="4">Май</option>
+		<option value="5">Июнь</option>
+		<option value="6">Июль</option>
+		<option value="7">Август</option>
+		<option value="8">Сентябрь</option>
+		<option value="9">Октябрь</option>
+		<option value="10">Ноябрь</option>
+		<option value="11">Декабрь</option>
+	</select>
+
+	<input type="radio" name="shift" value="1" id="1brigade">
+	<label for="1brigade">І бригада</label>
+	<input type="radio" name="shift" value="2" id="2brigade">
+	<label for="2brigade">ІI бригада</label>
+	<input type="radio" name="shift" value="3" id="3brigade">
+	<label for="3brigade">ІII бригада</label>
+	<input type="radio" name="shift" value="4" id="4brigade" checked="true">
+	<label for="4brigade">IV бригада</label>
+
+	<div id="container">
+
+	</div>
+
+
+	
+</body>
+<script>window.onload = function () {
+
+	var year = document.querySelector ("#year");
+	var month = document.querySelector ("#month");
+	var shift = document.getElementsByName("shift");
+	var container = document.querySelector ("#container");
+
+	for (let i = 0; i < shift.length; i++){
+		shift[i].onchange = function () {
+			choosedShift = this.value;
+			printMonth (container,
+			new Date (year.selectedOptions[0].value,
+			month.selectedOptions[0].value,
+			1),choosedShift);
+		}
+	}
+
+	var choosedShift = "4";
+		printMonth (container,
+			new Date (year.selectedOptions[0].value,
+			month.selectedOptions[0].value,
+			1),choosedShift);
+
+
+	year.onchange = function () {
+		printMonth (container,
+			new Date (year.selectedOptions[0].value,
+			month.selectedOptions[0].value,
+			1),choosedShift);
+	}
+	month.onchange = function () {
+		printMonth (container,
+			new Date (year.selectedOptions[0].value,
+			month.selectedOptions[0].value,
+			1),choosedShift);
+	}
+
+
+}
+
+function printMonth (container, date, shift) {
+
+	var headler  = ["Пн","Вт","Ср","Чт","Пт","Сб","Вс"];
+	
+	container.innerHTML = "";
+
+	for (let i = 0; i < headler.length; i++){
+		var day = document.createElement("div");
+		day.classList.add ("day");
+		day.classList.add ("headler");
+		day.innerText = headler[i];
+		container.appendChild(day);
+	}
+
+	var month = date.getMonth();
+	var i = 1;
+	while(date.getDay() != i){
+		var day = document.createElement("div");
+		day.classList.add ("day");
+		day.classList.add ("blind");
+		day.innerText = "";
+		container.appendChild(day);
+		i = (i+1)%7;
+	}
+
+	while (month == date.getMonth()) {
+		var day = document.createElement("div");
+		day.classList.add ("day");
+
+		if(isWorkingDay(date, shift)){
+			day.classList.add ("workingDay");
+		}
+		if(isWorkingNight(date, shift)){
+			day.classList.add ("workingNight");
+		}
+		day.innerText = date.getDate();
+		container.appendChild(day);
+		date.setDate(date.getDate()+1);
+	}
+
+}
+
+function isWorkingNight (date, shift){
+ 	switch (shift){
+		case "1": if(Math.ceil((date - new Date(2018,11,30))/(1000*3600*24))%4 == 0)
+					return true;
+				return false;
+		case "2": if(Math.ceil((date - new Date(2018,11,28))/(1000*3600*24))%4 == 0)
+					return true;
+				return false;
+		case "3": if(Math.ceil((date - new Date(2018,11,31))/(1000*3600*24))%4 == 0)
+					return true;
+				return false;
+		case "4": if(Math.ceil((date - new Date(2018,11,29))/(1000*3600*24))%4 == 0)
+					return true;
+				return false;
+			
+	}
+}
+
+function isWorkingDay (date, shift){
+
+
+	switch (shift){
+		case "1": if(Math.ceil((date - new Date(2018,11,29))/(1000*3600*24))%4 == 0)
+					return true;
+				return false;
+		case "2": if(Math.ceil((date - new Date(2018,11,31))/(1000*3600*24))%4 == 0)
+					return true;
+				return false;
+		case "3": if(Math.ceil((date - new Date(2018,11,30))/(1000*3600*24))%4 == 0)
+					return true;
+				return false;
+		case "4":if(Math.ceil((date - new Date(2018,11,28))/(1000*3600*24))%4 == 0)
+					return true;
+				return false;
+			
+	}
+}
+</script>
+</html>
