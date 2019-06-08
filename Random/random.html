@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Random test</title>
+    <style>
+    	canvas {
+    		border: 1px solid black;
+    	}
+    </style>
+</head>
+<body>
+
+<canvas id="mypic" width="600" height="400"></canvas>
+
+<form>
+	<p>
+		<label for="count">Count:</label>
+		<input type="text" id="count">
+	</p>
+	<p>
+		<label for="scale">Scale:</label>
+		<input type="text" id="scale">
+	</p>
+
+	<P>
+		<input type="button" id="previewButton" value="Preview" >
+	</p>
+
+</form>
+
+<div id="box"></div>
+</body>
+<script>window.onload = function () {
+
+	var previewButton = document.getElementById ("previewButton");
+
+	previewButton.onclick = function () {
+
+		var count = document.getElementById ("count").value;
+		var scale = document.getElementById ("scale").value;
+
+		randomTest (count, scale);
+
+	}
+
+
+}
+
+function randomTest (count, scale) {
+	var canvas = document.getElementById ("mypic");
+	var context = canvas.getContext ("2d");
+	context.fillStyle = "white";
+	context.fillRect (0, 0, canvas.width, canvas.height);
+	context.fillStyle = "blue";
+	var arr = [];
+	if(scale == 0){
+		scale = 1;
+	}
+
+	for(var i = 0; i < 100; i++){
+		arr [i] = 0;
+	}
+
+	var pick  = 0;
+	for(var i = 0; i < count; i++) {
+		pick = Math.floor(Math.random()*100);
+		arr[pick]++;
+	}
+
+	var gist = canvas.width/100;
+	for ( var i = 0; i < 100; i++) {
+		context.fillRect (i*gist, canvas.height - arr[i]/scale, gist, arr[i]/scale);
+	}
+
+	var box = document.getElementById ("box");
+	box.innerHTML = getMinMax (arr, count);
+
+}
+
+
+function printObject (object) {
+	var box = document.getElementById ("box");
+	var text;
+	for (var key in object) {
+		text = text + key + " : " + object[key] + "<br \/>";
+	}
+	box.innerHTML = text;
+}
+
+function getMinMax (arr, count) {
+	var min = arr[0];
+	var max = arr[0];
+	var summ = 0;
+	for (var i = 1; i < arr.length; i++){
+		if(arr[i]<min){
+			min = arr[i];
+		}
+		else if (arr[i]>max){
+			max = arr[i];
+		}
+		summ += arr[i];
+	}
+	return "min = " + min + "; " + "max = " + max + "; " + "aver = " + summ/arr.length + "; " + "expect = " + (count/arr.length);
+}</script>
+</html>
