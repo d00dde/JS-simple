@@ -41,6 +41,7 @@ function loadHandler (items) {
 	items.forEach(item => {
 		if(item.intersectionRatio > 0) {
 			item.target.setAttribute('src', item.target.getAttribute('imgSRC'));
+			intObs.unobserve(item.target);
 		}
 	});
 }
